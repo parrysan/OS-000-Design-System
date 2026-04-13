@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Grelinette (Broadfork) — OGANIKO</title>
+<style>
+  :root {
+    --og-black: #000000;
+    --og-white: #FFFFFF;
+    --og-green: #109200;
+    --og-fresh-leaf: #34C755;
+    --og-gold: #EECA25;
+    --og-dark-gray: #333333;
+    --og-olive: #6B8E23;
+    --og-brown: #8B4513;
+    --og-sage: #9CAF88;
+    --og-soft-orange: #FFA07A;
+    --og-light-bg: #F5F5F5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: var(--og-white);
+    color: var(--og-dark-gray);
+    line-height: 1.6;
+  }
+
+  .infographic {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 48px 40px;
+  }
+
+  /* ---- Header ---- */
+  .header {
+    margin-bottom: 48px;
+  }
+
+  .header .label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--og-green);
+    margin-bottom: 12px;
+  }
+
+  .header h1 {
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--og-black);
+    margin-bottom: 8px;
+  }
+
+  .header h1 span {
+    color: var(--og-green);
+  }
+
+  .header .accent-line {
+    width: 80px;
+    height: 3px;
+    background: var(--og-green);
+    margin: 16px 0;
+  }
+
+  .header .subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--og-dark-gray);
+    max-width: 640px;
+  }
+
+  /* ---- Intro card ---- */
+  .intro-card {
+    background: var(--og-light-bg);
+    border-left: 4px solid var(--og-green);
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .intro-card p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--og-dark-gray);
+  }
+
+  .intro-card strong {
+    color: var(--og-black);
+  }
+
+  /* ---- Section titles ---- */
+  .section-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--og-green);
+    margin-bottom: 24px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--og-green);
+    display: inline-block;
+  }
+
+  /* ---- 3-phase technique ---- */
+  .technique {
+    margin-bottom: 56px;
+  }
+
+  .phases {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .phase {
+    background: var(--og-white);
+    border: 1px solid #E8E8E8;
+    border-radius: 12px;
+    padding: 28px 24px;
+    position: relative;
+    transition: box-shadow 0.2s;
+  }
+
+  .phase:hover {
+    box-shadow: 0 4px 20px rgba(16, 146, 0, 0.08);
+  }
+
+  .phase-number {
+    width: 40px;
+    height: 40px;
+    background: var(--og-green);
+    color: var(--og-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .phase h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--og-black);
+    margin-bottom: 12px;
+  }
+
+  .phase p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--og-dark-gray);
+  }
+
+  .phase .tip {
+    margin-top: 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--og-green);
+    font-style: italic;
+  }
+
+  /* ---- Benefits ---- */
+  .benefits {
+    margin-bottom: 56px;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    background: var(--og-white);
+    border-radius: 10px;
+    border: 1px solid #E8E8E8;
+  }
+
+  .benefit-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+
+  .benefit-icon.soil { background: rgba(16, 146, 0, 0.1); }
+  .benefit-icon.back { background: rgba(238, 202, 37, 0.15); }
+  .benefit-icon.speed { background: rgba(52, 199, 85, 0.12); }
+  .benefit-icon.weed { background: rgba(139, 69, 19, 0.1); }
+  .benefit-icon.eco { background: rgba(107, 142, 35, 0.12); }
+  .benefit-icon.durable { background: rgba(156, 175, 136, 0.2); }
+
+  .benefit h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--og-black);
+    margin-bottom: 4px;
+  }
+
+  .benefit p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--og-dark-gray);
+  }
+
+  /* ---- Comparison ---- */
+  .comparison {
+    margin-bottom: 56px;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+
+  .comparison-table thead th {
+    text-align: left;
+    padding: 14px 20px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--og-green);
+  }
+
+  .comparison-table thead th:first-child {
+    color: var(--og-dark-gray);
+  }
+
+  .comparison-table thead th.grelinette {
+    color: var(--og-green);
+  }
+
+  .comparison-table thead th.spade {
+    color: var(--og-dark-gray);
+  }
+
+  .comparison-table tbody td {
+    padding: 14px 20px;
+    border-bottom: 1px solid #ECECEC;
+    vertical-align: top;
+  }
+
+  .comparison-table tbody td:first-child {
+    font-weight: 500;
+    color: var(--og-black);
+  }
+
+  .comparison-table .good {
+    color: var(--og-green);
+    font-weight: 500;
+  }
+
+  .comparison-table .bad {
+    color: var(--og-soft-orange);
+    font-weight: 500;
+  }
+
+  /* ---- Callout ---- */
+  .callout {
+    background: var(--og-black);
+    color: var(--og-white);
+    border-radius: 12px;
+    padding: 36px 40px;
+    margin-bottom: 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .callout::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--og-green), var(--og-fresh-leaf), var(--og-gold));
+  }
+
+  .callout h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .callout p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #CCCCCC;
+  }
+
+  .callout .highlight {
+    color: var(--og-fresh-leaf);
+    font-weight: 600;
+  }
+
+  /* ---- Tine guide ---- */
+  .tine-guide {
+    margin-bottom: 56px;
+  }
+
+  .tine-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  .tine-card {
+    text-align: center;
+    padding: 24px 16px;
+    border-radius: 10px;
+    border: 1px solid #E8E8E8;
+  }
+
+  .tine-card .number {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--og-green);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .tine-card .unit {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--og-dark-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .tine-card p {
+    font-size: 14px;
+    color: var(--og-dark-gray);
+    line-height: 1.5;
+  }
+
+  /* ---- Footer ---- */
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 32px;
+    border-top: 2px solid var(--og-green);
+    margin-top: 16px;
+  }
+
+  .footer .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer .brand-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--og-black);
+    letter-spacing: 1px;
+  }
+
+  .footer .leaf {
+    width: 28px;
+    height: 28px;
+  }
+
+  .footer .tagline {
+    font-size: 13px;
+    color: var(--og-dark-gray);
+    font-style: italic;
+  }
+
+  /* ---- Print ---- */
+  @media print {
+    .infographic { padding: 24px; }
+    .phase:hover { box-shadow: none; }
+  }
+
+  @media (max-width: 700px) {
+    .infographic { padding: 32px 20px; }
+    .header h1 { font-size: 32px; }
+    .phases { grid-template-columns: 1fr; }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .tine-cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="infographic">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="label">OGANIKO Gardening</div>
+    <h1>The <span>Grelinette</span><br>Broadfork</h1>
+    <div class="accent-line"></div>
+    <p class="subtitle">The tool that aerates your soil without destroying it. Invented by Andre Grelin in the 1950s, built from forged steel to last decades.</p>
+  </div>
+
+  <!-- Intro -->
+  <div class="intro-card">
+    <p>The grelinette is a hand-powered soil aerator with <strong>3 to 9 forged steel tines (14mm diameter)</strong> and two wide-set ergonomic handles. It loosens and lifts soil without inverting it &mdash; preserving the natural microbial ecosystem that keeps your garden thriving. A foundational tool of <strong>permaculture and no-dig gardening</strong>.</p>
+  </div>
+
+  <!-- Technique -->
+  <div class="technique">
+    <div class="section-title">The 3-Phase Rhythm</div>
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-number">1</div>
+        <h3>Insert</h3>
+        <p>Arms extended straight, tool tilted forward. Push the tines into the soil. The forward position naturally angles the tines backward, setting up the lift.</p>
+        <div class="tip">Keep arms straight &mdash; let body weight do the work.</div>
+      </div>
+      <div class="phase">
+        <div class="phase-number">2</div>
+        <h3>Lift</h3>
+        <p>Pull backward &mdash; not upward &mdash; to lever the soil up. The wide handles keep the motion above hip height. Your back stays completely straight.</p>
+        <div class="tip">Soil is lifted and loosened, never flipped.</div>
+      </div>
+      <div class="phase">
+        <div class="phase-number">3</div>
+        <h3>Reset</h3>
+        <p>Gently lower the soil back down without shaking. Slide the grelinette backward along the ground to reposition. Never lift the tool to move it.</p>
+        <div class="tip">Slide, don't lift &mdash; save energy for the next pass.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Benefits -->
+  <div class="benefits">
+    <div class="section-title">Why Use a Grelinette</div>
+    <div class="benefits-grid">
+      <div class="benefit">
+        <div class="benefit-icon soil">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#109200" stroke-width="2" stroke-linecap="round"><path d="M12 22c4-4 8-7 8-12a8 8 0 0 0-16 0c0 5 4 8 8 12z"/><path d="M12 10v4"/><path d="M10 12h4"/></svg>
+        </div>
+        <div>
+          <h4>Preserves Soil Biology</h4>
+          <p>Aerates without inverting horizons. Topsoil bacteria stay at the surface where they thrive.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon back">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EECA25" stroke-width="2" stroke-linecap="round"><path d="M12 2v8"/><path d="M8 6l4-4 4 4"/><path d="M20 12c0 5-4 10-8 10s-8-5-8-10"/></svg>
+        </div>
+        <div>
+          <h4>Zero Back Strain</h4>
+          <p>Ergonomic handles above hip height. No bending, no kneeling. Your back stays straight throughout.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon speed">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#34C755" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div>
+          <h4>Faster Than Digging</h4>
+          <p>Accomplishes aeration in a single pass. Significantly faster than traditional spade work.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon weed">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8B4513" stroke-width="2" stroke-linecap="round"><path d="M7 20l10-16"/><path d="M17 20L7 4"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <div>
+          <h4>Deep Weed Extraction</h4>
+          <p>Optional arch attachment lifts soil higher, uprooting deep-rooted weeds like couch grass and bindweed.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon eco">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6B8E23" stroke-width="2" stroke-linecap="round"><path d="M17 8C8 10 5 18 5 22c4-2 8-4 12-14z"/><path d="M2 2s5 2 8 8"/></svg>
+        </div>
+        <div>
+          <h4>Permaculture Aligned</h4>
+          <p>Core no-dig principle: work with nature, not against it. No fuel, no noise, no emissions.</p>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon durable">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9CAF88" stroke-width="2" stroke-linecap="round"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M8 8h8l-4-6z"/></svg>
+        </div>
+        <div>
+          <h4>Built to Last Decades</h4>
+          <p>Forged steel construction with 14mm tines. A one-time investment that outlasts any powered tool.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comparison -->
+  <div class="comparison">
+    <div class="section-title">Grelinette vs Traditional Spade</div>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="grelinette">Grelinette</th>
+          <th class="spade">Traditional Spade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Soil structure</td>
+          <td class="good">Preserved &mdash; no inversion</td>
+          <td class="bad">Destroyed &mdash; horizons flipped</td>
+        </tr>
+        <tr>
+          <td>Microbial life</td>
+          <td class="good">Protected &mdash; stays in place</td>
+          <td class="bad">Disrupted &mdash; buried or exposed</td>
+        </tr>
+        <tr>
+          <td>Physical strain</td>
+          <td class="good">Minimal &mdash; back stays straight</td>
+          <td class="bad">High &mdash; bending, lifting, twisting</td>
+        </tr>
+        <tr>
+          <td>Speed</td>
+          <td class="good">Single pass aeration</td>
+          <td class="bad">Slow, repetitive digging</td>
+        </tr>
+        <tr>
+          <td>Energy use</td>
+          <td class="good">Human-powered, efficient</td>
+          <td class="bad">Human-powered, exhausting</td>
+        </tr>
+        <tr>
+          <td>Longevity</td>
+          <td class="good">Decades (forged steel)</td>
+          <td class="bad">Years (handle breakage common)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tine guide -->
+  <div class="tine-guide">
+    <div class="section-title">Choosing Your Tines</div>
+    <div class="tine-cards">
+      <div class="tine-card">
+        <div class="number">3&ndash;4</div>
+        <div class="unit">tines</div>
+        <p>Heavy clay soils or narrow raised beds. Easier to push in, less resistance.</p>
+      </div>
+      <div class="tine-card">
+        <div class="number">5&ndash;6</div>
+        <div class="unit">tines</div>
+        <p>Most garden soils. The versatile choice for standard-width beds (60&ndash;80 cm).</p>
+      </div>
+      <div class="tine-card">
+        <div class="number">7&ndash;9</div>
+        <div class="unit">tines</div>
+        <p>Light, sandy soils and wide beds. Maximum coverage per pass.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <h3>The No-Dig Principle</h3>
+    <p>Traditional digging buries topsoil bacteria deep underground while bringing anaerobic subsoil to the surface. The grelinette does the opposite: it <span class="highlight">aerates without inverting</span>, keeping the soil's natural layers intact. This single difference is why it's the preferred tool in permaculture, no-dig, and regenerative gardening worldwide.</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="brand">
+      <span class="brand-name">OGANIKO</span>
+      <svg class="leaf" viewBox="0 0 40 40" fill="none">
+        <path d="M20 4c-4 6-14 14-6 28 0 0 2-8 10-12-2 6-2 14-2 14s16-12 6-28c0 0-4 4-8 6 2-4 2-8 0-8z" fill="#109200"/>
+      </svg>
+    </div>
+    <div class="tagline">Helping you eat healthy and feel great</div>
+  </div>
+
+</div>
+</body>
+</html>

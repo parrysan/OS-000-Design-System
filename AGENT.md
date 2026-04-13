@@ -1,17 +1,17 @@
 ---
-title: "OG-018-Designmd — Design.md"
+title: "OS-000-Design-System — Design System"
 type: project-bootstrap
 created: "2026-04-13"
 ---
 
-# OG-018-Designmd — Design.md
+# OS-000-Design-System — Design System
 
 > **Bootstrap order — read these in order before doing any work in this project:**
 >
 > 1. `~/.claude/CLAUDE.md` → `Open-Memory-Vault/system/identity/MASTER-PROMPT.md` — Phil's identity (auto-loaded via symlink in Claude Code; other tools should mirror this).
 > 2. `~/AGENT.md` → `agent-config/AGENT.md` — global operating manual (work style, skills routing, secrets policy, layering rules in §2.10).
 > 3. `Open-Memory-Vault/AGENTS.md` — vault operating contract (read **only** if you will write to the vault during this session).
-> 4. `Open-Memory-Vault/projects/OG-018-Designmd/README.md` — durable project page (status, decisions, recent activity, vault-side context).
+> 4. `Open-Memory-Vault/projects/OS-000-Design-System/README.md` — durable project page (status, decisions, recent activity, vault-side context).
 > 5. **This file** — project-specific overrides and live operational references (below).
 >
 > **The project's `AGENT.md` is a bootstrap manifest, not a knowledge dump.** It points at everything else. Durable knowledge lives in the vault project page. Do not duplicate.
@@ -20,13 +20,13 @@ created: "2026-04-13"
 
 ## At a glance
 
-- **Code**: `OG-018`
-- **Name**: Design.md
-- **Stakeholder**: Phil (self)
+- **Code**: `OS-000`
+- **Name**: Design System
+- **Stakeholder**: Phil (OG AI OS)
 - **Status**: `active`
-- **Priority**: `medium`
-- **Revenue lane**: `3-oganiko`
-- **Purpose** (one sentence): Define the scaffolding for Oganiko branding, aligned with the Oganiko brand guidelines — the central place to document requirements and provide clear guidelines for all applications that need on-brand output.
+- **Priority**: `high`
+- **Type**: OS infrastructure (continuous lifecycle)
+- **Purpose** (one sentence): The foundational design system for all OG output — central documentation and guidelines for all applications that need on-brand output.
 - **Last touched**: `2026-04-13`
 
 ---
@@ -35,10 +35,10 @@ created: "2026-04-13"
 
 | Resource | Location |
 |---|---|
-| **Code root** | this folder (`OG-projects/OG-018-Designmd/`) |
+| **Code root** | this folder (`dev/OS-000-Design-System/`) |
 | **Project docs** | `./docs/` |
-| **Vault project page** | `Open-Memory-Vault/projects/OG-018-Designmd/README.md` |
-| **GitHub repo** | https://github.com/parrysan/OG-018-Designmd |
+| **Vault project page** | `Open-Memory-Vault/projects/OS-000-Design-System/README.md` |
+| **GitHub repo** | https://github.com/parrysan/OS-000-Design-System |
 | **External systems** | Google Drive: `OGANIKO-DRIVE/OG-Brand/` (brand source PDFs, colour palettes, guidelines) |
 
 ---
@@ -90,6 +90,6 @@ created: "2026-04-13"
 
 > **Optional, ephemeral.** A 2–3 line free-form scratch pad of "where I left off" — not durable knowledge. Durable decisions belong in the vault project page. Wipe and rewrite freely.
 
-Last action: Project scaffolded. Brand source materials gathered from Google Drive PDFs and existing oganiko-branding skill.
-Next action: Audit existing oganiko-branding skill against source PDFs. Define the full DESIGN.md specification covering all application types (infographics, slides, web, labels, social).
-Open question: Should the DESIGN.md live in this project or replace/extend the existing oganiko-branding skill's references?
+Last action: Reclassified from OG-018-Designmd to OS-000-Design-System on 2026-04-13. This is OS infrastructure, not a deliverable.
+Next action: Audit existing oganiko-branding skill against source PDFs. Define the full design system specification covering all application types (infographics, slides, web, labels, social).
+Open question: Should the design system spec live in this project or replace/extend the existing oganiko-branding skill's references?

@@ -1,17 +1,17 @@
-# OG-018-Designmd
+# OS-000-Design-System
 
-> Define the scaffolding for Oganiko branding, aligned with the Oganiko brand guidelines — the central place to document requirements and provide clear guidelines for all applications that need on-brand output.
+> The foundational design system for all OG output — central documentation and guidelines for all applications that need on-brand output.
 
 ## Where to start
 
 - **For working on this project**: read `AGENT.md` in this folder. It is the bootstrap manifest — it tells any LLM (or human) which files to read and in what order.
-- **For project status, decisions, and history**: see the vault project page at `Open-Memory-Vault/projects/OG-018-Designmd/README.md`.
+- **For project status, decisions, and history**: see the vault project page at `Open-Memory-Vault/projects/OS-000-Design-System/README.md`.
 
 ## Quick facts
 
-- **Project code**: OG-018-Designmd
+- **Project code**: OS-000-Design-System
 - **Created**: 2026-04-13
-- **GitHub**: https://github.com/parrysan/OG-018-Designmd
+- **GitHub**: https://github.com/parrysan/OS-000-Design-System
 
 ## Structure
 
