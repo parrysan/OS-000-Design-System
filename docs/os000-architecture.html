@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1600, initial-scale=1">
+<title>OS-000 Design System Architecture</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: #ffffff;
+    padding: 40px 50px;
+    width: 1500px;
+    color: #1e1e1e;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1e1e1e;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 16px;
+    color: #868e96;
+    font-style: italic;
+    margin-bottom: 30px;
+  }
+
+  /* ---- Foundation ---- */
+  .foundation {
+    background: #fff3bf;
+    border: 2.5px solid #e8590c;
+    border-radius: 16px;
+    padding: 20px 24px 24px;
+    margin-bottom: 0;
+  }
+  .foundation-label {
+    font-size: 22px;
+    font-weight: 700;
+    color: #e8590c;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .foundation-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .f-card {
+    background: #a5d8ff;
+    border: 2px solid #1971c2;
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .f-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1971c2;
+    margin-bottom: 10px;
+  }
+  .f-card p {
+    font-size: 13px;
+    color: #343a40;
+    line-height: 1.5;
+  }
+
+  /* ---- Arrow zone ---- */
+  .arrow-zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    gap: 40px;
+    position: relative;
+  }
+  .arrow-down {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .arrow-down .shaft {
+    width: 3px;
+    height: 36px;
+    background: #1971c2;
+  }
+  .arrow-down .head {
+    width: 0; height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 14px solid #1971c2;
+  }
+  .arrow-label {
+    font-size: 14px;
+    color: #1971c2;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  /* ---- Projects row ---- */
+  .projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    position: relative;
+  }
+  .project {
+    background: #d3f9d8;
+    border: 2.5px solid #2f9e44;
+    border-radius: 16px;
+    padding: 18px 20px 20px;
+  }
+  .project-label {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2f9e44;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .p-card {
+    border-radius: 10px;
+    padding: 14px 12px;
+    text-align: center;
+    border: 2px solid;
+  }
+  .p-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .p-card p {
+    font-size: 12px;
+    color: #495057;
+    line-height: 1.4;
+  }
+  .p-card.theme   { background: #e5dbff; border-color: #7048e8; }
+  .p-card.theme h4 { color: #7048e8; }
+  .p-card.ds       { background: #e5dbff; border-color: #7048e8; }
+  .p-card.ds h4    { color: #7048e8; }
+  .p-card.reused   { background: #a5d8ff; border-color: #1971c2; }
+  .p-card.reused h4{ color: #1971c2; }
+  .p-card.new      { background: #ffc9c9; border-color: #e03131; }
+  .p-card.new h4   { color: #e03131; }
+
+  /* ---- Promote arrows (sides) ---- */
+  .promote-wrapper {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    position: relative;
+  }
+  .promote-col {
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .promote-col .shaft-up {
+    width: 3px;
+    height: 100%;
+    background: transparent;
+    border-left: 3px dashed #2f9e44;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .promote-col .head-up {
+    width: 0; height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 13px solid #2f9e44;
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .promote-col .plabel {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 12px;
+    font-weight: 700;
+    color: #2f9e44;
+    letter-spacing: 1px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(180deg);
+    white-space: nowrap;
+    background: #fff;
+    padding: 4px 2px;
+  }
+  .main-content {
+    flex: 1;
+  }
+
+  /* ---- Cycle ---- */
+  .cycle {
+    text-align: center;
+    margin-top: 24px;
+    padding: 14px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #495057;
+    letter-spacing: 1px;
+  }
+  .cycle span { color: #e8590c; }
+
+  /* ---- Side note ---- */
+  .layout-with-note {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+  }
+  .layout-main {
+    flex: 1;
+  }
+  .side-note {
+    width: 280px;
+    flex-shrink: 0;
+    background: #f1f3f5;
+    border: 2px dashed #868e96;
+    border-radius: 12px;
+    padding: 20px 18px;
+    margin-top: 60px;
+  }
+  .side-note h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #495057;
+    margin-bottom: 12px;
+  }
+  .side-note p {
+    font-size: 13px;
+    color: #495057;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .side-note .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 4px;
+  }
+  .badge.reused { background: #a5d8ff; color: #1971c2; }
+  .badge.new    { background: #ffc9c9; color: #e03131; }
+</style>
+</head>
+<body>
+
+<div class="title">OS-000 Design System &mdash; Component Ecosystem</div>
+<div class="subtitle">&ldquo;Making success available for reuse&rdquo;</div>
+
+<div class="layout-with-note">
+  <div class="layout-main">
+    <div class="promote-wrapper">
+
+      <div class="promote-col">
+        <div class="shaft-up"></div>
+        <div class="head-up"></div>
+        <div class="plabel">PROMOTE TO OS-000</div>
+      </div>
+
+      <div class="main-content">
+
+        <!-- Foundation -->
+        <div class="foundation">
+          <div class="foundation-label">OS-000-Design-System &mdash; The Foundation</div>
+          <div class="foundation-grid">
+            <div class="f-card">
+              <h3>Shared Components</h3>
+              <p>Button &middot; Hero &middot; Nav<br>Footer &middot; Card &middot; Form<br>Gallery &middot; CTA<br>Testimonial &middot; Pricing</p>
+            </div>
+            <div class="f-card">
+              <h3>Base Tokens</h3>
+              <p>Spacing &middot; Typography<br>Breakpoints &middot; Grid<br>Colour Primitives<br>Shadows &middot; Radii</p>
+            </div>
+            <div class="f-card">
+              <h3>Default Theme</h3>
+              <p>OG Brand Defaults<br>Fallback Values<br>Base Configuration<br>Semantic Mappings</p>
+            </div>
+            <div class="f-card">
+              <h3>/design-system<br>Viewer Template</h3>
+              <p>Auto-generates the<br>project component<br>catalog page</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arrow zone -->
+        <div class="arrow-zone">
+          <div class="arrow-down"><div class="shaft"></div><div class="head"></div></div>
+          <div class="arrow-label">inherits components + tokens + viewer template</div>
+          <div class="arrow-down"><div class="shaft"></div><div class="head"></div></div>
+        </div>
+
+        <!-- Projects -->
+        <div class="projects">
+          <div class="project">
+            <div class="project-label">OG-017 &mdash; Magda&rsquo;s Website</div>
+            <div class="project-grid">
+              <div class="p-card theme">
+                <h4>Project Theme Config</h4>
+                <p>Magda&rsquo;s brand colours<br>Typography &middot; Fonts<br>Imagery style</p>
+              </div>
+              <div class="p-card ds">
+                <h4>/design-system Route</h4>
+                <p>Live visual catalog<br>of all components in<br>Magda&rsquo;s theme</p>
+              </div>
+              <div class="p-card reused">
+                <h4>Reused Components</h4>
+                <p>Inherited from<br>OS-000 library</p>
+              </div>
+              <div class="p-card new">
+                <h4>New Components</h4>
+                <p>Built specifically<br>for this project</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="project">
+            <div class="project-label">OG-008 &mdash; Garden Center</div>
+            <div class="project-grid">
+              <div class="p-card theme">
+                <h4>Project Theme Config</h4>
+                <p>Garden Center palette<br>Typography &middot; Fonts<br>Nature imagery</p>
+              </div>
+              <div class="p-card ds">
+                <h4>/design-system Route</h4>
+                <p>Live visual catalog<br>of all components in<br>Garden Center theme</p>
+              </div>
+              <div class="p-card reused">
+                <h4>Reused Components</h4>
+                <p>Inherited from<br>OS-000 library</p>
+              </div>
+              <div class="p-card new">
+                <h4>New Components</h4>
+                <p>Built specifically<br>for this project</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /main-content -->
+
+      <div class="promote-col">
+        <div class="shaft-up"></div>
+        <div class="head-up"></div>
+        <div class="plabel">PROMOTE TO OS-000</div>
+      </div>
+
+    </div><!-- /promote-wrapper -->
+
+    <!-- Cycle -->
+    <div class="cycle">
+      The Cycle: &nbsp; <span>Build</span> &nbsp;&rarr;&nbsp; <span>Ship</span> &nbsp;&rarr;&nbsp; <span>Promote</span> &nbsp;&rarr;&nbsp; <span>Reuse</span> &nbsp;&rarr;&nbsp; <span>Build</span> &hellip;
+    </div>
+
+  </div><!-- /layout-main -->
+
+  <!-- Side note -->
+  <div class="side-note">
+    <h4>/design-system Page</h4>
+    <p>Every project gets a <strong>/design-system</strong> route showing all components styled with that project&rsquo;s theme.</p>
+    <p>
+      <span class="badge reused">Reused</span> from OS-000 library<br>
+      <span class="badge new">New</span> built for this project
+    </p>
+    <p>Visual proof of what&rsquo;s available <em>before</em> writing any code. The catalog grows with every project shipped.</p>
+    <p style="margin-top:14px; padding-top:12px; border-top:1px solid #ced4da; font-size:12px; color:#868e96;">
+      After a project ships, successful new components get promoted back into OS-000 &mdash; making them available for every future project.
+    </p>
+  </div>
+
+</div><!-- /layout-with-note -->
+
+</body>
+</html>

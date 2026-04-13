@@ -1,0 +1,17 @@
+{
+  "name": "@og/design-system",
+  "version": "0.1.0",
+  "description": "OS-000 — foundational design system for all OG web projects",
+  "exports": {
+    "./tokens/base": "./tokens/base.css",
+    "./tokens/oganiko": "./tokens/theme-oganiko.css",
+    "./tokens/neutral": "./tokens/theme-neutral.css",
+    "./components": "./components/index.js",
+    "./viewer": "./viewer/DesignSystemPage.jsx"
+  },
+  "files": [
+    "tokens/",
+    "components/",
+    "viewer/"
+  ]
+}

@@ -14,7 +14,7 @@ created: "2026-04-13"
 > 4. `Open-Memory-Vault/projects/OS-000-Design-System/README.md` — durable project page (status, decisions, recent activity, vault-side context).
 > 5. **This file** — project-specific overrides and live operational references (below).
 >
-> **The project's `AGENT.md` is a bootstrap manifest, not a knowledge dump.** It points at everything else. Durable knowledge lives in the vault project page. Do not duplicate.
+> **The project's `CLAUDE.md` is a bootstrap manifest, not a knowledge dump.** It points at everything else. Durable knowledge lives in the vault project page. Do not duplicate.
 
 ---
 
@@ -57,11 +57,15 @@ created: "2026-04-13"
 
 ---
 
-## Tech stack (overrides global defaults)
+## Tech stack
 
-> Only list what differs from the global defaults in `agent-config/AGENT.md` §2.7. If everything matches the global defaults, write "Inherits global defaults" and stop.
+This IS the global default stack. OS-000 is the foundation that all Lane 1-3 projects consume.
 
-- TODO — determine stack once scope is finalised. This is primarily a documentation/specification project; code output will be design tokens, CSS, and guidelines in markdown.
+- **Tokens**: CSS custom properties via Tailwind v4 `@theme` — `tokens/base.css` (brand-agnostic) + `tokens/theme-*.css` (brand-specific)
+- **Components**: React/JSX — `components/` directory, exported via `components/index.js`
+- **Viewer**: `/design-system` page template — `viewer/DesignSystemPage.jsx`
+- **Themes available**: `theme-oganiko.css` (OGANIKO brand), `theme-neutral.css` (clean slate for clients)
+- **Consumption**: Projects import tokens via CSS `@import`, copy components into their own `src/`, override theme values per project
 
 ---
 
@@ -90,6 +94,6 @@ created: "2026-04-13"
 
 > **Optional, ephemeral.** A 2–3 line free-form scratch pad of "where I left off" — not durable knowledge. Durable decisions belong in the vault project page. Wipe and rewrite freely.
 
-Last action: Reclassified from OG-018-Designmd to OS-000-Design-System on 2026-04-13. This is OS infrastructure, not a deliverable.
-Next action: Audit existing oganiko-branding skill against source PDFs. Define the full design system specification covering all application types (infographics, slides, web, labels, social).
-Open question: Should the design system spec live in this project or replace/extend the existing oganiko-branding skill's references?
+Last action: Built v1 foundation — base tokens (base.css), two themes (oganiko + neutral), 6 components (Button, Card, Hero, Nav, Footer, Section), and the /design-system viewer page.
+Next action: First consumer — integrate OS-000 into OG-017-Magdas-Website as proof of concept. Then promote learnings back.
+Open question: Should oganiko-branding skill point at OS-000 tokens as its source of truth, or remain independent?
