@@ -94,6 +94,12 @@ This IS the global default stack. OS-000 is the foundation that all Lane 1-3 pro
 
 > **Optional, ephemeral.** A 2–3 line free-form scratch pad of "where I left off" — not durable knowledge. Durable decisions belong in the vault project page. Wipe and rewrite freely.
 
-Last action: Built v1 foundation — base tokens (base.css), two themes (oganiko + neutral), 6 components (Button, Card, Hero, Nav, Footer, Section), and the /design-system viewer page.
-Next action: First consumer — integrate OS-000 into OG-017-Magdas-Website as proof of concept. Then promote learnings back.
-Open question: Should oganiko-branding skill point at OS-000 tokens as its source of truth, or remain independent?
+> Last action: Built catalogue with 3 component entries — Header (os-001), Tabs (os-002),
+>   Footer (os-003). Established entry format: sticky header, page-level tabs
+>   (Example / Parameters & Tokens), shared catalogue.css (2026-04-15).
+> In-progress: Rename OS → ODS across catalogue files (decision captured, not yet applied to code).
+>   Full shell layout (header + left sidebar) deferred — captured as future direction.
+> Pending decisions: None.
+> Open questions: Should catalogue entries live as standalone HTML or inside a shell?
+>   (Decided: standalone for now, shell later when content justifies it.)
+> Key IDs: Catalogue served at catalogue/ directory. No deployment yet.

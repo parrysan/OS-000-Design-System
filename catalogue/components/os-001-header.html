@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header — OS-000 Catalogue</title>
+  <link rel="stylesheet" href="../catalogue.css">
+  <style>
+    /* ── Live example styles ─────────────── */
+    .demo-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+    .demo-header.scrolled {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    }
+    .demo-header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: height 0.3s ease;
+      height: 5rem;
+    }
+    .demo-header.scrolled .demo-header-inner { height: 4rem; }
+    .demo-brand {
+      font-weight: 700;
+      color: #1a1a1a;
+      text-decoration: none;
+      transition: font-size 0.3s ease;
+      font-size: 1.5rem;
+    }
+    .demo-header.scrolled .demo-brand { font-size: 1.125rem; }
+    .demo-nav { display: flex; align-items: center; gap: 2rem; }
+    .demo-nav a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #6b7280;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .demo-nav a:hover { color: #1a1a1a; }
+    .demo-cta {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #fff;
+      background: #1a1a1a;
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .demo-cta:hover { background: #374151; }
+    .demo-scroll-area {
+      height: 400px;
+      overflow-y: auto;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      position: relative;
+    }
+    .demo-scroll-content {
+      padding: 6rem 2rem;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.875rem;
+      height: 800px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <div class="cat-page">
+
+    <!-- Sticky header block -->
+    <div class="cat-header">
+      <div class="cat-breadcrumb">
+        <a href="../index.html">Catalogue</a> &rsaquo; Components &rsaquo; Header
+      </div>
+      <h1 class="cat-title">Header <span class="cat-id">os-001</span></h1>
+      <div class="cat-aka">Also known as: Navigation bar, Nav, Top bar</div>
+      <p class="cat-description">Fixed site navigation with brand, links, CTA, and mobile drawer.</p>
+    </div>
+
+    <!-- Page-level tabs -->
+    <div class="cat-page-tabs" role="tablist">
+      <button class="cat-page-tab active" role="tab" data-panel="tab-example">Example</button>
+      <button class="cat-page-tab" role="tab" data-panel="tab-spec">Parameters &amp; Tokens</button>
+    </div>
+
+    <!-- Tab 1: Example -->
+    <div class="cat-page-panel active" id="tab-example">
+
+      <div class="cat-section">
+        <div class="cat-section-title">Example</div>
+        <div class="cat-example">
+          <div class="cat-example-label">Scroll down to see the shrink behaviour</div>
+          <div class="demo-scroll-area" id="scrollArea">
+            <header class="demo-header" id="demoHeader">
+              <div class="demo-header-inner">
+                <a href="#" class="demo-brand">Brandname</a>
+                <nav class="demo-nav">
+                  <a href="#">About</a>
+                  <a href="#">Services</a>
+                  <a href="#">Contact</a>
+                  <a href="#" class="demo-cta">Get Started</a>
+                </nav>
+              </div>
+            </header>
+            <div class="demo-scroll-content">
+              <span>&uarr; Header at full height (5rem)</span>
+              <span>Keep scrolling&hellip;</span>
+              <span>&darr; Header has shrunk (4rem) with backdrop blur</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-section">
+        <div class="cat-section-title">Variants</div>
+        <div class="cat-variants">
+          <div class="cat-variant">
+            <div class="cat-variant-label">default</div>
+            <p style="font-size:0.875rem; color:var(--cat-text-secondary)">Static height. No scroll reaction. Simple border bottom.</p>
+          </div>
+          <div class="cat-variant">
+            <div class="cat-variant-label">shrink</div>
+            <p style="font-size:0.875rem; color:var(--cat-text-secondary)">Reduces height on scroll. Brand scales down. Background blurs to frosted glass. Subtle shadow appears.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-section">
+        <div class="cat-section-title">How it works</div>
+        <div class="cat-behavior">
+          Sticky. Opens at full height showing the brand and navigation prominently. On scroll, the header shrinks &mdash; height reduces, brand scales down, and the background gains a frosted-glass blur. Remains visible throughout the page. On mobile, navigation collapses into a hamburger that opens a full-width drawer.
+        </div>
+      </div>
+
+      <div class="cat-section">
+        <div class="cat-section-title">Relationships</div>
+        <a href="os-003-footer.html" class="cat-rel">&harr; os-003 Footer</a>
+      </div>
+
+    </div>
+
+    <!-- Tab 2: Parameters & Tokens -->
+    <div class="cat-page-panel" id="tab-spec">
+
+      <div class="cat-section">
+        <div class="cat-section-title">Parameters</div>
+        <table class="cat-params">
+          <thead>
+            <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>brand</code></td><td>string</td><td>&mdash;</td><td>Brand text or logo</td></tr>
+            <tr><td><code>brandHref</code></td><td>string</td><td><code>/</code></td><td>Brand link destination</td></tr>
+            <tr><td><code>links</code></td><td>array</td><td><code>[]</code></td><td>Navigation items: <code>{label, href}</code></td></tr>
+            <tr><td><code>cta</code></td><td>string</td><td>&mdash;</td><td>CTA button label (omit to hide)</td></tr>
+            <tr><td><code>ctaHref</code></td><td>string</td><td>&mdash;</td><td>CTA link destination</td></tr>
+            <tr><td><code>variant</code></td><td>string</td><td><code>shrink</code></td><td><code>default</code> | <code>shrink</code></td></tr>
+            <tr><td><code>className</code></td><td>string</td><td><code>""</code></td><td>Additional CSS classes</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cat-section">
+        <div class="cat-section-title">Tokens</div>
+        <div class="cat-tokens">
+          <span class="cat-token">--color-bg</span>
+          <span class="cat-token">--color-border-subtle</span>
+          <span class="cat-token">--color-text</span>
+          <span class="cat-token">--color-text-secondary</span>
+          <span class="cat-token">--font-primary</span>
+          <span class="cat-token">--weight-bold</span>
+          <span class="cat-token">--weight-medium</span>
+          <span class="cat-token">--spacing-6</span>
+          <span class="cat-token">--spacing-8</span>
+          <span class="cat-token">--container-max</span>
+          <span class="cat-token">--text-sm</span>
+          <span class="cat-token">--text-xl</span>
+        </div>
+      </div>
+
+      <div class="cat-section">
+        <div class="cat-section-title">Code</div>
+        <div class="cat-code-wrapper">
+          <div class="cat-code-header" onclick="this.nextElementSibling.classList.toggle('open')">
+            <span><strong>os-001</strong> &middot; Source: <code>components/Nav.jsx</code></span>
+            <span>&blacktriangledown;</span>
+          </div>
+          <div class="cat-code-body">
+            <pre><code>&lt;Nav
+  brand="MabV"
+  brandHref="/"
+  links={[
+    { label: 'Our Science', href: '#science' },
+    { label: 'Pipeline', href: '#pipeline' },
+    { label: 'About', href: '#about' },
+    { label: 'Contact', href: '#contact' },
+  ]}
+  cta="Request Information"
+  ctaHref="#contact"
+  variant="shrink"
+/&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // Page-level tab switching
+    document.querySelector('.cat-page-tabs').addEventListener('click', (e) => {
+      const tab = e.target.closest('.cat-page-tab');
+      if (!tab) return;
+      document.querySelectorAll('.cat-page-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.cat-page-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.panel).classList.add('active');
+    });
+
+    // Demo: scroll-aware header
+    const area = document.getElementById('scrollArea');
+    const header = document.getElementById('demoHeader');
+    area.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', area.scrollTop > 40);
+    });
+  </script>
+</body>
+</html>
