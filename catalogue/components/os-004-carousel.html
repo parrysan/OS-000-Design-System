@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel — OS-000 Catalogue</title>
+  <link rel="stylesheet" href="../catalogue.css">
+  <style>
+    /* ── Live example styles ─────────────── */
+    .demo-carousel-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    .demo-carousel-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .demo-carousel-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.2;
+    }
+    .demo-carousel-subtitle {
+      font-size: 1rem;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+    .demo-carousel-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+    .demo-carousel-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e5e7eb;
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.15s;
+      border-radius: 0;
+      font-size: 1.25rem;
+      color: #1a1a1a;
+    }
+    .demo-carousel-btn:hover:not(:disabled) {
+      background: #f3f4f6;
+    }
+    .demo-carousel-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    .demo-carousel-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-left: 1rem;
+      transition: opacity 0.15s;
+    }
+    .demo-carousel-action:hover { opacity: 0.7; }
+    .demo-carousel-track {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 0.5rem;
+    }
+    .demo-carousel-track::-webkit-scrollbar { display: none; }
+    .demo-carousel-item {
+      flex: 0 0 260px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem;
+      background: #fff;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .demo-carousel-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .demo-carousel-item-label {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #2563eb;
+      margin-bottom: 0.375rem;
+    }
+    .demo-carousel-item-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.25rem;
+    }
+    .demo-carousel-item-desc {
+      font-size: 0.8125rem;
+      color: #6b7280;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+      .demo-carousel-nav { display: none; }
+      .demo-carousel-item { flex: 0 0 280px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cat-page">
+
+    <!-- Sticky header block -->
+    <div class="cat-header">
+      <div class="cat-breadcrumb">
+        <a href="../index.html">Catalogue</a> &rsaquo; Components &rsaquo; Carousel
+      </div>
+      <h1 class="cat-title">Carousel <span class="cat-id">os-004</span></h1>
+      <div class="cat-aka">Also known as: Slider, Horizontal scroll, Card scroller</div>
+      <p class="cat-description">Horizontally scrollable card container with navigation arrows and an optional action link.</p>
+    </div>
+
+    <!-- Page-level tabs -->
+    <div class="cat-page-tabs" role="tablist">
+      <button class="cat-page-tab active" role="tab" data-panel="tab-example">Example</button>
+      <button class="cat-page-tab" role="tab" data-panel="tab-spec">Parameters &amp; Tokens</button>
+    </div>
+
+    <!-- Tab 1: Example -->
+    <div class="cat-page-panel active" id="tab-example">
+
+      <div class="cat-section">
+        <div class="cat-section-title">Example</div>
+        <div class="cat-example">
+          <div class="cat-example-label">Use the arrows or swipe to scroll. Arrows disable at edges.</div>
+          <div class="demo-carousel-section">
+            <div class="demo-carousel-header">
+              <div>
+                <div class="demo-carousel-title">Featured Items</div>
+                <div class="demo-carousel-subtitle">A collection of things worth browsing</div>
+              </div>
+              <div class="demo-carousel-nav" id="demoNav">
+                <button class="demo-carousel-btn" id="demoPrev" aria-label="Scroll left" disabled>&lsaquo;</button>
+                <button class="demo-carousel-btn" id="demoNext" aria-label="Scroll right">&rsaquo;</button>
+                <a href="#" class="demo-carousel-action">View All &rarr;</a>
+              </div>
+            </div>
+            <div class="demo-carousel-track" id="demoTrack">
+              <div class="demo-carousel-item">
+                <div class="demo-carousel-item-label">Category A</div>
+                <div class="demo-carousel-item-title">Item One</div>
+                <div class="demo-carousel-item-desc">Description of the first item in the carousel.</div>
+              </div>
+              <div class="demo-carousel-item">
+                <div class="demo-carousel-item-label">Category B</div>
+                <div class="demo-carousel-item-title">Item Two</div>
+                <div class="demo-carousel-item-desc">Description of the second item.</div>
+              </div>
+              <div class="demo-carousel-item">
+                <div class="demo-carousel-item-label">Category A</div>
+                <div class="demo-carousel-item-title">Item Three</div>
+                <div class="demo-carousel-item-desc">Description of the third item.</div>
+              </div>
+              <div class="demo-carousel-item">
+                <div class="demo-carousel-item-label">Category C</div>
+                <div class="demo-carousel-item-title">Item Four</div>
+                <div class="demo-carousel-item-desc">Description of the fourth item.</div>
+              </div>
+              <div class="demo-carousel-item">
+                <div class="demo-carousel-item-label">Category B</div>
+                <div class="demo-carousel-item-title">Item Five</div>
+                <div class="demo-carousel-item-desc">Description of the fifth item.</div>
+              </div>
+              <div class="demo-carousel-item">
+                <div class="demo-carousel-item-label">Category A</div>
+                <div class="demo-carousel-item-title">Item Six</div>
+                <div class="demo-carousel-item-desc">Description of the sixth item.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-section">
+        <div class="cat-section-title">How it works</div>
+        <div class="cat-behavior">
+          A horizontal flex container with <code>overflow-x: auto</code> and hidden scrollbars. Items have a fixed width and <code>flex-shrink: 0</code> to prevent collapse. On desktop, the container is sized so that 3 full items are visible plus a peek (~15%) of the next item, signaling more content. Navigation arrows in the top-right of the header row scroll the container by 80% of its visible width using <code>scrollTo({ behavior: 'smooth' })</code>. Arrows disable at the scroll edges (opacity drops to 0.3). An optional &ldquo;View All&rdquo; action link sits to the right of the arrows. On mobile (&lt;768px), arrows are hidden and native touch scrolling takes over. On tablet (768&ndash;1023px), 2 items plus a peek are visible.
+        </div>
+      </div>
+
+      <div class="cat-section">
+        <div class="cat-section-title">Variants</div>
+        <div class="cat-variants">
+          <div class="cat-variant">
+            <div class="cat-variant-label">default</div>
+            <p style="font-size:0.875rem; color:var(--cat-text-secondary)">3 items visible + peek on desktop, 2 + peek on tablet, 1 + peek on mobile. Navigation arrows in header row.</p>
+          </div>
+          <div class="cat-variant">
+            <div class="cat-variant-label">compact</div>
+            <p style="font-size:0.875rem; color:var(--cat-text-secondary)">4 items visible + peek. For smaller cards (images, thumbnails). Same scroll mechanics.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-section">
+        <div class="cat-section-title">Relationships</div>
+        <a href="os-001-header.html" class="cat-rel">&harr; os-001 Header</a>
+      </div>
+
+    </div>
+
+    <!-- Tab 2: Parameters & Tokens -->
+    <div class="cat-page-panel" id="tab-spec">
+
+      <div class="cat-section">
+        <div class="cat-section-title">Parameters</div>
+        <table class="cat-params">
+          <thead>
+            <tr><th>Name</th><th>Type</th><th>Default</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>title</code></td><td>string</td><td>&mdash;</td><td>Section heading text</td></tr>
+            <tr><td><code>subtitle</code></td><td>string</td><td>&mdash;</td><td>Section subheading text</td></tr>
+            <tr><td><code>items</code></td><td>array</td><td><code>[]</code></td><td>Carousel items (content defined by consumer)</td></tr>
+            <tr><td><code>actionLabel</code></td><td>string</td><td>&mdash;</td><td>Text for the &ldquo;View All&rdquo; link (omit to hide)</td></tr>
+            <tr><td><code>actionHref</code></td><td>string</td><td><code>#</code></td><td>Destination for the action link</td></tr>
+            <tr><td><code>scrollAmount</code></td><td>number</td><td><code>0.8</code></td><td>Fraction of container width to scroll per click (0&ndash;1)</td></tr>
+            <tr><td><code>className</code></td><td>string</td><td><code>""</code></td><td>Additional CSS classes on the outer container</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cat-section">
+        <div class="cat-section-title">Tokens</div>
+        <div class="cat-tokens">
+          <span class="cat-token">--color-text</span>
+          <span class="cat-token">--color-text-secondary</span>
+          <span class="cat-token">--color-border</span>
+          <span class="cat-token">--color-bg</span>
+          <span class="cat-token">--color-bg-muted</span>
+          <span class="cat-token">--spacing-4</span>
+          <span class="cat-token">--spacing-6</span>
+          <span class="cat-token">--spacing-8</span>
+          <span class="cat-token">--spacing-12</span>
+          <span class="cat-token">--container-max</span>
+          <span class="cat-token">--font-primary</span>
+          <span class="cat-token">--weight-bold</span>
+          <span class="cat-token">--weight-semibold</span>
+          <span class="cat-token">--tracking-tight</span>
+          <span class="cat-token">--tracking-caps</span>
+        </div>
+      </div>
+
+      <div class="cat-section">
+        <div class="cat-section-title">Code</div>
+        <div class="cat-code-wrapper">
+          <div class="cat-code-header" onclick="this.nextElementSibling.classList.toggle('open')">
+            <span><strong>os-004</strong> &middot; Vanilla JS scroll controller</span>
+            <span>&blacktriangledown;</span>
+          </div>
+          <div class="cat-code-body">
+            <pre><code>// Carousel controller — vanilla JS
+// Attach to any element with [data-carousel]
+function initCarousel(el) {
+  const track = el.querySelector('[data-carousel-track]');
+  const prev  = el.querySelector('[data-carousel-prev]');
+  const next  = el.querySelector('[data-carousel-next]');
+  if (!track || !prev || !next) return;
+
+  const scrollAmount = 0.8; // 80% of visible width
+
+  function checkEdges() {
+    const { scrollLeft, scrollWidth, clientWidth } = track;
+    prev.disabled = scrollLeft &lt; 10;
+    next.disabled = scrollLeft + clientWidth &gt;= scrollWidth - 10;
+  }
+
+  prev.addEventListener('click', () =&gt; {
+    track.scrollTo({
+      left: track.scrollLeft - track.clientWidth * scrollAmount,
+      behavior: 'smooth'
+    });
+  });
+
+  next.addEventListener('click', () =&gt; {
+    track.scrollTo({
+      left: track.scrollLeft + track.clientWidth * scrollAmount,
+      behavior: 'smooth'
+    });
+  });
+
+  track.addEventListener('scroll', checkEdges);
+  window.addEventListener('resize', checkEdges);
+  checkEdges();
+}</code></pre>
+          </div>
+        </div>
+        <div class="cat-code-wrapper" style="margin-top: 0.75rem;">
+          <div class="cat-code-header" onclick="this.nextElementSibling.classList.toggle('open')">
+            <span><strong>os-004</strong> &middot; React: <code>SparksCarousel</code> (OG-017 reference)</span>
+            <span>&blacktriangledown;</span>
+          </div>
+          <div class="cat-code-body">
+            <pre><code>&lt;SparksCarousel
+  title="Featured Items"
+  subtitle="A collection of things"
+  actionLabel="View All"
+  actionHref="/items"
+  items={[
+    { id: 1, imageSrc: '/img/1.jpg', title: 'Item One', subtitle: 'Cat A' },
+    { id: 2, imageSrc: '/img/2.jpg', title: 'Item Two', subtitle: 'Cat B' },
+  ]}
+/&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // Page-level tab switching
+    document.querySelector('.cat-page-tabs').addEventListener('click', (e) => {
+      const tab = e.target.closest('.cat-page-tab');
+      if (!tab) return;
+      document.querySelectorAll('.cat-page-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.cat-page-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.panel).classList.add('active');
+    });
+
+    // Demo: carousel controller
+    (function() {
+      const track = document.getElementById('demoTrack');
+      const prev  = document.getElementById('demoPrev');
+      const next  = document.getElementById('demoNext');
+      if (!track || !prev || !next) return;
+
+      function checkEdges() {
+        const { scrollLeft, scrollWidth, clientWidth } = track;
+        prev.disabled = scrollLeft < 10;
+        next.disabled = scrollLeft + clientWidth >= scrollWidth - 10;
+      }
+
+      prev.addEventListener('click', () => {
+        track.scrollTo({
+          left: track.scrollLeft - track.clientWidth * 0.8,
+          behavior: 'smooth'
+        });
+      });
+
+      next.addEventListener('click', () => {
+        track.scrollTo({
+          left: track.scrollLeft + track.clientWidth * 0.8,
+          behavior: 'smooth'
+        });
+      });
+
+      track.addEventListener('scroll', checkEdges);
+      window.addEventListener('resize', checkEdges);
+      checkEdges();
+    })();
+  </script>
+</body>
+</html>
